@@ -52,7 +52,7 @@ export default function Clients() {
     <section
       id="clients"
       aria-labelledby="clients-heading"
-      className="bg-white px-5 pb-[70px] pt-[82px]"
+      className="bg-white px-5 pb-[50px] pt-[82px]"
       style={{ fontFamily: font_family }}
     >
       <div className="mx-auto max-w-[1210px] text-center">

@@ -20,7 +20,7 @@ export default function Stats() {
     <section
       id="stats"
       aria-labelledby="stats-heading"
-      className="bg-white px-5 pb-[90px] pt-[52px] sm:pt-[56px]"
+      className="bg-white px-5 pb-[50px] pt-[52px] sm:pt-[56px]"
       style={{ fontFamily: font_family }}
     >
       <div className="mx-auto max-w-[1080px] text-center">
