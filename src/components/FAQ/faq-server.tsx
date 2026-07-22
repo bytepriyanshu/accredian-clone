@@ -10,6 +10,7 @@ export default function FAQSection() {
       style={{
         fontFamily: font_family,
       }}
+      id="faqs"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="text-center">

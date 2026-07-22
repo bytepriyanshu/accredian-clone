@@ -4,17 +4,9 @@ import { useState } from "react";
 import { ChevronRight, Headset } from "lucide-react";
 
 import { font_family } from "@/src/utils";
-import EnquiryModal, {type EnquiryFormData } from "./EnquiryModal";
+import Button from "./Button";
 
 export default function ContactCTA() {
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-
-  const handleEnquirySubmit = (data: EnquiryFormData) => {
-    // Replace with your API call, e.g.:
-    // await fetch("/api/enquiry", { method: "POST", body: JSON.stringify(data) });
-    console.log("Enquiry submitted:", data);
-  };
-
   return (
     <section className="lg:mt-6" style={{ fontFamily: font_family }}>
       <div className="mx-auto max-w-[85rem] px-4 xl:px-12">
@@ -35,7 +27,10 @@ export default function ContactCTA() {
               {/* Icon */}
               <div className="h-20 w-20 flex-shrink-0 rounded-2xl bg-slate-200/30 p-1">
                 <div className="flex h-full w-full items-center justify-center rounded-2xl bg-white">
-                  <Headset className="h-10 w-10 text-[#2F6CE5]" strokeWidth={2} />
+                  <Headset
+                    className="h-10 w-10 text-[#2F6CE5]"
+                    strokeWidth={2}
+                  />
                 </div>
               </div>
 
@@ -52,23 +47,19 @@ export default function ContactCTA() {
             </div>
 
             {/* Button */}
-            <button
+            <Button
               type="button"
-              onClick={() => setIsEnquiryOpen(true)}
-              className="flex h-14 w-full max-w-[200px] items-center justify-center gap-2 rounded-xl bg-white px-6 text-lg font-semibold text-[#2F6CE5] shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-50"
+              opensEnquiryModal
+              variant="outline"
+              size="lg"
+              showArrow
+              className="max-w-[200px]rounded-xl border-white bg-whitepx-6text-lgfont-semiboldtext-[#2F6CE5]shadow-lg hover:border-white hover:bg-gray-50md:self-auto self-stretch"
             >
               Contact Us
-              <ChevronRight className="h-5 w-5" strokeWidth={2.5} />
-            </button>
+            </Button>
           </div>
         </div>
       </div>
-
-      <EnquiryModal
-        isOpen={isEnquiryOpen}
-        onClose={() => setIsEnquiryOpen(false)}
-        onSubmit={handleEnquirySubmit}
-      />
     </section>
   );
 }

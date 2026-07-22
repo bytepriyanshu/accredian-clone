@@ -71,7 +71,7 @@ export default function Home() {
           </ul>
 
           <div className="my-8">
-            <Button href="/#contact" aria-label="Enquire now about enterprise learning">
+            <Button aria-label="Enquire now about enterprise learning" opensEnquiryModal>
               Enquire Now
             </Button>
           </div>

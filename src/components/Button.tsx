@@ -1,5 +1,8 @@
+"use client";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
+import EnquiryModal, { type EnquiryFormData } from "./EnquiryModal";
+import { useState } from "react";
 
 type ButtonVariant = "primary" | "outline";
 type ButtonSize = "md" | "lg";
@@ -10,6 +13,7 @@ type SharedButtonProps = {
   showArrow?: boolean;
   size?: ButtonSize;
   variant?: ButtonVariant;
+  opensEnquiryModal?: boolean;
 };
 
 type LinkButtonProps = SharedButtonProps &
@@ -49,8 +53,11 @@ export default function Button({
   showArrow = false,
   size = "md",
   variant = "primary",
+  opensEnquiryModal = false,
   ...props
 }: ButtonProps) {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+
   const buttonClassName = cx(
     baseStyles,
     variantStyles[variant],
@@ -61,25 +68,59 @@ export default function Button({
   const content = (
     <>
       <span>{children}</span>
-      {showArrow ? (
-        <span aria-hidden="true" className="text-[24px] leading-none">
+
+      {showArrow && (
+        <span
+          aria-hidden="true"
+          className="text-[24px] leading-none"
+        >
           &rsaquo;
         </span>
-      ) : null}
+      )}
     </>
   );
 
+  const handleEnquirySubmit = (data: EnquiryFormData) => {
+    console.log("Enquiry submitted:", data);
+  };
+
+  // Link buttons should not open the modal.
   if ("href" in props && props.href !== undefined) {
     return (
-      <Link {...props} className={buttonClassName}>
+      <Link
+        {...props}
+        className={buttonClassName}
+      >
         {content}
       </Link>
     );
   }
 
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    props.onClick?.(event);
+
+    if (!event.defaultPrevented && opensEnquiryModal) {
+      setIsEnquiryOpen(true);
+    }
+  };
+
   return (
-    <button {...props} className={buttonClassName}>
-      {content}
-    </button>
+    <>
+      <button
+        {...props}
+        className={buttonClassName}
+        onClick={handleClick}
+      >
+        {content}
+      </button>
+
+      {opensEnquiryModal && (
+        <EnquiryModal
+          isOpen={isEnquiryOpen}
+          onClose={() => setIsEnquiryOpen(false)}
+          onSubmit={handleEnquirySubmit}
+        />
+      )}
+    </>
   );
 }

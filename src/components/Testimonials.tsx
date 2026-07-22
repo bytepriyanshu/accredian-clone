@@ -49,6 +49,7 @@ export default function Testimonials() {
     <section
       className="md:py-20"
       style={{ fontFamily: font_family }}
+      id="testimonials"
     >
       <div className="mx-auto max-w-7xl px-4">
         <header className="text-center">

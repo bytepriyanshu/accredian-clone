@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { FAQCategory } from "@/src/utils";
 import { font_family } from "@/src/utils";
+import Button from "../Button";
 
 type Props = {
   categories: FAQCategory[];
@@ -25,9 +26,12 @@ export default function FAQClient({ categories }: Props) {
   };
 
   return (
-    <div className="mt-14 grid gap-12 lg:grid-cols-[280px_1fr]" style={{
-            fontFamily: font_family
-          }}>
+    <div
+      className="mt-14 grid gap-12 lg:grid-cols-[280px_1fr]"
+      style={{
+        fontFamily: font_family,
+      }}
+    >
       {/* Categories */}
 
       <aside>
@@ -54,19 +58,14 @@ export default function FAQClient({ categories }: Props) {
       <div>
         <div className="space-y-2">
           {currentCategory.faqs.map((faq, index) => (
-            <div
-              key={faq.question}
-              className="border-b border-[#ECECEC]"
-            >
+            <div key={faq.question} className="border-b border-[#ECECEC]">
               <button
                 onClick={() => toggleFAQ(index)}
                 className="flex w-full items-center justify-between gap-5 py-6 text-left"
               >
                 <h3
                   className={`text-xl font-semibold transition-colors ${
-                    openFAQ === index
-                      ? "text-[#2F6CE5]"
-                      : "text-[#1F2937]"
+                    openFAQ === index ? "text-[#2F6CE5]" : "text-[#1F2937]"
                   }`}
                 >
                   {faq.question}
@@ -81,9 +80,7 @@ export default function FAQClient({ categories }: Props) {
 
               <div
                 className={`grid overflow-hidden transition-all duration-300 ${
-                  openFAQ === index
-                    ? "grid-rows-[1fr] pb-6"
-                    : "grid-rows-[0fr]"
+                  openFAQ === index ? "grid-rows-[1fr] pb-6" : "grid-rows-[0fr]"
                 }`}
               >
                 <div className="overflow-hidden">
@@ -99,11 +96,11 @@ export default function FAQClient({ categories }: Props) {
         {/* Button */}
 
         <div className="pt-12 text-center">
-          <button
-            className="rounded-lg bg-[#2F6CE5] px-10 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-[#245FD4]"
+          <Button
+            opensEnquiryModal
           >
             Enquire Now
-          </button>
+          </Button>
         </div>
       </div>
     </div>

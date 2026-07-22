@@ -9,6 +9,7 @@ export default function CatFramework() {
       style={{
         fontFamily: font_family,
       }}
+      id="cat"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
