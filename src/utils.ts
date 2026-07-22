@@ -1,0 +1,1 @@
+export const font_family='Circular Std, Circular, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
