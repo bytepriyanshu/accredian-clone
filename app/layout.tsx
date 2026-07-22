@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-vercel-domain.vercel.app"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "https://accredian-clone-five-hazel.vercel.app"
+  ),
 
   title: {
     default: "Accredian Enterprise",
@@ -39,6 +41,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Accredian Enterprise",
+    images: [
+      {
+        url: "/corporate-big-hero-v4.webp",
+        width: 1200,
+        height: 630,
+        alt: "Accredian Enterprise Corporate Learning",
+      },
+    ],
   },
 
   twitter: {
@@ -46,6 +56,7 @@ export const metadata: Metadata = {
     title: "Accredian Enterprise",
     description:
       "Corporate learning and workforce upskilling solutions.",
+    images: ["/corporate-big-hero-v4.webp"],
   },
 
   icons: {
